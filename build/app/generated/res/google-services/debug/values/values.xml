@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">411705022884-jem3o06p23qk6o1nhmgi9noue3q0kv76.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">411705022884</string>
+    <string name="google_api_key" translatable="false">AIzaSyDQQxI-V9iGbJjfYh3GCo7g5DkSL3aK8j0</string>
+    <string name="google_app_id" translatable="false">1:411705022884:android:e366ed1673368500280931</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDQQxI-V9iGbJjfYh3GCo7g5DkSL3aK8j0</string>
+    <string name="google_storage_bucket" translatable="false">sport-app-45878.appspot.com</string>
+    <string name="project_id" translatable="false">sport-app-45878</string>
+</resources>
