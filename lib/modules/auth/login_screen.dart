@@ -23,16 +23,17 @@ class LoginScreen extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
+          if (state is LoadingLoginUser) {
+            AuthCubit.get(context).isLoading = true;
+          }
           if (state is LoginUserSucceful) {
             CacheHelper.saveData(key: "uid", value: state.uid);
             AuthCubit.get(context).isLoading = false;
+            nextScreenRep(context, HomeScreen());
           }
           if (state is LoginUserError) {
             showSnackbar(context, Text(state.erorr));
             AuthCubit.get(context).isLoading = false;
-          }
-          if (state is LoadingLoginUser) {
-            AuthCubit.get(context).isLoading = true;
           }
         },
         builder: (context, state) {
@@ -107,8 +108,6 @@ class LoginScreen extends StatelessWidget {
                                                 .then((value) {
                                               emailController.clear();
                                               passwordController.clear();
-                                              nextScreenRep(
-                                                  context, HomeScreen());
                                             });
                                           }
                                         },

@@ -26,20 +26,25 @@ class RegisterScreen extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
+          if (state is LoadingCreateUser) {
+            AuthCubit.get(context).isLoading = true;
+            print("in Loadin create user satate");
+          }
           if (state is LoadingCreateUserErorr) {
             showSnackbar(context, Text(state.e));
             AuthCubit.get(context).isLoading = false;
-          }
-          if (state is CreateUserDataBaseErorr) {
-            showSnackbar(context, Text(state.e));
-            AuthCubit.get(context).isLoading = false;
+            print("in loaiing state error");
           }
           if (state is CreateUserDataBaseSucceful) {
             CacheHelper.saveData(key: "uid", value: state.uid);
             AuthCubit.get(context).isLoading = false;
+            print("in create data base user state sccsces ");
+            nextScreenRep(context, HomeScreen());
           }
-          if (state is LoadingCreateUser) {
-            AuthCubit.get(context).isLoading = true;
+          if (state is CreateUserDataBaseErorr) {
+            showSnackbar(context, Text(state.e));
+            AuthCubit.get(context).isLoading = false;
+            print("in error state");
           }
         },
         builder: (context, state) {
@@ -145,8 +150,6 @@ class RegisterScreen extends StatelessWidget {
                                               emailController.clear();
                                               phoneController.clear();
                                               passwordController.clear();
-                                              nextScreenRep(
-                                                  context, HomeScreen());
                                             });
                                           }
                                         },

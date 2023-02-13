@@ -62,7 +62,7 @@ class AuthCubit extends Cubit<AuthState> {
           .user!;
       emit(LoginUserSucceful(user.uid));
     } on FirebaseAuthException catch (e) {
-      emit(LoadingCreateUserErorr(e.toString()));
+      emit(LoginUserError(e.toString()));
     }
   }
 }

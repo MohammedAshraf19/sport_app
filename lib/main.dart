@@ -8,8 +8,8 @@ import 'modules/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   await CacheHelper.init();
+  await Firebase.initializeApp();
   Widget widget;
   var uId = await CacheHelper.getData(key: "uid");
   if (uId == null) {
